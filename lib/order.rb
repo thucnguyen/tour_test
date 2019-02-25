@@ -18,6 +18,8 @@ class Order
       @items.each do |item|
         csv << item.to_csv
       end
+      csv << ["Sales Taxes: #{sales_taxes}"]
+      csv << ["Total: #{total}"]
     end
   end
 end

@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Item do
+  let(:quantity) { 2 }
   let(:imported) { false }
   let(:exempt) { false }
-  subject { described_class.new('Example item', 10, imported, exempt) }
+  subject { described_class.new('Example item', 10, 2, imported, exempt) }
 
   describe '#imported_tax' do
     context 'when it is not imported' do
@@ -40,9 +41,15 @@ describe Item do
     end
   end
 
+  describe '#cost' do
+    it 'is the sum of cost and taxes' do
+      expect(subject.cost).to eq 11
+    end
+  end
+
   describe '#total' do
-    it 'is the sum of costs and taxes' do
-      expect(subject.total).to eq 11
+    it 'is the quantity * cost' do
+      expect(subject.total).to eq subject.cost * 2
     end
   end
 

@@ -1,9 +1,10 @@
 require 'spec_helper'
 require 'csv'
+require 'pry'
 
 describe Order do
-  let(:chocolate) { Item.new('Chocolate', 10, false, true) }
-  let(:perfume) { Item.new('Perfume', 20, false, false) }
+  let(:chocolate) { Item.new('Chocolate', 10, 1, false, true) }
+  let(:perfume) { Item.new('Perfume', 20, 1, false, false) }
 
   subject { described_class.new([chocolate, perfume]) }
 
@@ -22,7 +23,9 @@ describe Order do
   describe '#export' do
     let(:csv) do
       chocolate.to_csv.to_csv +
-        perfume.to_csv.to_csv
+        perfume.to_csv.to_csv +
+        "Sales Taxes: #{subject.sales_taxes}\n" \
+        "Total: #{subject.total}\n"
     end
 
     it 'generates list items in csv format' do

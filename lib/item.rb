@@ -1,7 +1,8 @@
 class Item
-  def initialize(name, price, imported = false, exempt = false)
+  def initialize(name, price, quantity = 1, imported = false, exempt = false)
     @name = name
     @price = price
+    @quantity = quantity
     @imported = imported
     @exempt = exempt
   end
@@ -22,8 +23,12 @@ class Item
     round_up(imported_tax + sale_tax)
   end
 
-  def total
+  def cost
     @price + taxes
+  end
+
+  def total
+    cost * @quantity
   end
 
   def to_csv
