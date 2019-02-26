@@ -23,6 +23,10 @@ class Item
     round_up(imported_tax + sale_tax)
   end
 
+  def total_taxes
+    taxes * @quantity
+  end
+
   def cost
     @price + taxes
   end

@@ -41,6 +41,12 @@ describe Item do
     end
   end
 
+  describe '#total_taxes' do
+    it 'is the quantity * taxes' do
+      expect(subject.total_taxes).to eq 2 * subject.taxes
+    end
+  end
+
   describe '#cost' do
     it 'is the sum of cost and taxes' do
       expect(subject.cost).to eq 11

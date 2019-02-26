@@ -6,7 +6,7 @@ class Order
   end
 
   def sales_taxes
-    @items.inject(0) { |s, item| s + item.taxes }
+    @items.inject(0) { |s, item| s + item.total_taxes }
   end
 
   def total
