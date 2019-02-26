@@ -32,7 +32,7 @@ class Item
   end
 
   def total
-    cost * @quantity
+    (cost * @quantity).round(2)
   end
 
   def to_csv
