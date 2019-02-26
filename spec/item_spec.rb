@@ -61,7 +61,7 @@ describe Item do
 
   describe '#to_csv' do
     it 'returns an array' do
-      expect(subject.to_csv).to eq ['Example item', 10, subject.total]
+      expect(subject.to_csv).to eq [2, 'Example item', subject.total]
     end
   end
 end

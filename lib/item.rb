@@ -36,7 +36,7 @@ class Item
   end
 
   def to_csv
-    [@name, @price, total]
+    [@quantity, @name, total]
   end
 
   private
